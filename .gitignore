@@ -28,3 +28,9 @@ ENV/
 .DS_Store
 Thumbs.db
 EOF
+
+# files 
+*.docx
+*.pdf
+*.md
+*.txt

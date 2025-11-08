@@ -9,14 +9,13 @@ description = "A RAG agent with document parsing, vector search, and multi-turn 
 dependencies = [
     "python-dotenv",
     "PyPDF2",
-    "docx",
+    "python-docx",
     "markdown",
     "faiss-cpu",
     "langchain",
     "langgraph",
     "tiktoken",
     "openai",
-    "fastapi",
     "uvicorn"
 ]
 

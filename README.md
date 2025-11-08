@@ -15,7 +15,7 @@
 
 ## 🧰 技术栈
 
-- Python 3.10+
+- Python 3.10
 - PyPDF2, python-docx, markdown
 - FAISS + Sentence-BERT
 - LangChain + LangGraph
@@ -27,7 +27,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/yourusername/rag-agent-project.git
+git clone https://github.com/dreamsqq/MyAgents.git
 cd rag-agent-project
 
 # 使用 uv 安装依赖

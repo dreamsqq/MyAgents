@@ -1,4 +1,3 @@
-# services/chat_service.py
 import logging
 from typing import List, Dict
 from agents.rag_agent import RAGAgent
@@ -17,9 +16,11 @@ class ChatService:
         return self.history
 
     def ask(self, question: str) -> Dict[str, any]:
-        result = self.agent.run(question)
+        result = self.agent.run(question, self.history)
         response = result["response"]
         self.add_message("user", question)
         self.add_message("assistant", response)
+        # 更新服务的对话历史
+        self.chat_history = result["chat_history"]
         logger.info(f"对话历史长度: {len(self.history)}")
         return {"response": response, "context": result.get("context")}

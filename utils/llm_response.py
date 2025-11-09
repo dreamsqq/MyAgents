@@ -2,11 +2,16 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 import logging
+import time
 logger = logging.getLogger(__name__)
 load_dotenv()
 
+# 使用 @traceable 自动上报到 LangSmith
+from langsmith import traceable
+@traceable(run_type="chain")
 def get_llm_answer(user_query, context_docs, chat_history):
     try:
+        start_time = time.time()
         if chat_history is None:
             chat_history = []
 
@@ -58,8 +63,31 @@ def get_llm_answer(user_query, context_docs, chat_history):
             temperature=0.1,   # 低温度，减少幻觉
             max_tokens=1024
         )
+        answer = response.choices[0].message.content
+        lasttime = time.time() - start_time
+        result = {
+            "input": {
+                "user_query": user_query,
+                "context_doc_count": len(context_docs),
+                "chat_history_length": len(chat_history)
+            },
+            "output": {
+                "answer": answer,
+                "latency_seconds": round(lasttime, 3),
+                "context_used": bool(context.strip())
+            }
+        }
 
-        return response.choices[0].message.content
+        return result
+
     except Exception as e:
+        lasttime = time.time() - start_time
         logger.error(f"调用llm回答失败: {e}")
-        return "调用llm回答失败。"
+        return {
+            "input": {"user_query": user_query},
+            "output": {
+                "error": str(e),
+                "latency_seconds": round(lasttime, 3),
+                "answer": "调用 LLM 回答失败。"
+            }
+        }

@@ -50,8 +50,9 @@ class VectorStore:
         for idx in range(len(I[0])):
             score = D[0][idx]
             text = self.metadata[I[0][idx]].get("text", "")
-            logger.debug(f'文本：{text[:100]}')
+            # logger.debug(f'文本：{text[:100]}')
             results.append({
+  
                 "score": float(score),
                 "text":  self.texts[idx],
                 "metadata": self.metadata[idx]

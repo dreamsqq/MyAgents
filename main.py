@@ -29,7 +29,7 @@ def load_documents(doc_dir: str = r"data"):
             texts = [doc.page_content for doc in documents]
             metadatas = [doc.metadata for doc in documents]
             # metadata = [{"source_doc": str(file_path),"content":str(chunk.page_content), "text": chunk.metadata, } for chunk in chunks]
-            # logging.info(metadata[0]["content"])
+            logging.info(metadatas)
             vector_store.add_texts(texts, metadatas)
         except Exception as e:
             logger.error(f"处理文件失败: {file_path}, 错误: {e}")

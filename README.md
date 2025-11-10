@@ -7,6 +7,7 @@
 - ✅ 支持 PDF、Word (.docx)、Markdown (.md)、TXT 文件上传与解析
 - ✅ 文本分段与向量化（FAISS）
 - ✅ 向量检索 + LLM 生成问答
+- ✅ Langsmith调用可观测性
 - ✅ 多轮对话上下文保持
 - ✅ 使用 LangGraph 构建 Agent 执行流程图
 - ✅ 使用标准日志模块（logging）
@@ -30,7 +31,10 @@ git clone https://github.com/dreamsqq/MyAgents.git
 cd MyAgents
 
 # 使用 uv 安装依赖
+# 安装pyproject.toml文件
 uv pip install -e .
+# 安装requirements.txt文件
+uv pip install -r requirements.txt
 
 # 运行主程序
 python main.py

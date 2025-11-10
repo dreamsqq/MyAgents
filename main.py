@@ -40,7 +40,7 @@ def main():
     try:
         logger.info("RAG Agent 项目启动")
         valid = False
-        doc_dir=None
+        doc_dir=r'D:\C_Documents\sanziqi.docx'
         vector_store = load_documents()
         if vector_store is None:
             logger.info("向量库加载失败，请上传文件")

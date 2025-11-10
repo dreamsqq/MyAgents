@@ -19,7 +19,7 @@
 - Python 3.10
 - PyPDF2, python-docx, markdown
 - FAISS + Sentence-BERT
-- LangChain + LangGraph
+- LangChain + LangGraph + Langsmith
 - logging
 - uv (pip 替代)
 

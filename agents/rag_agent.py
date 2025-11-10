@@ -48,7 +48,7 @@ class RAGAgent:
             chat_history = state.get("chat_history", [])  # 从状态中获取历史
             context = self._retrieve_context(query)
             # 传入 chat_history 到生成响应的方法
-            response = self._generate_response(query, context, chat_history)
+            response = self._generate_response(query, context, chat_history)['output']['answer']
             
             # 更新对话历史（将当前查询和响应加入历史）
             new_chat_history = chat_history + [

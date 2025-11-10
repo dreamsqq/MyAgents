@@ -16,6 +16,7 @@ env/
 venv/
 .venv/
 ENV/
+.python-version
 
 # Env files
 .env
@@ -34,3 +35,5 @@ EOF
 *.pdf
 *.md
 *.txt
+
+models/*

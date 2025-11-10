@@ -9,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 class VectorStore:
     def __init__(self, embedding_model_name: str = "all-MiniLM-L6-v2",local_path='.\models'):
+        if not os.path.exists(local_path):
+            os.makedirs(local_path)
         model_path = os.path.join(local_path, embedding_model_name)
         if not os.path.exists(model_path):
             logger.info(f"Embedding 模型不存在，正在下载: {embedding_model_name}")
